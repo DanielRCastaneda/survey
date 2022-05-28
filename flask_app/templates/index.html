@@ -9,7 +9,7 @@
     <title>Survey</title>
 </head>
 <body>
-    <div id="container" class="d-flex bg-dark pt-5 " style="color: white; margin: auto; width: 650px; height: 500px;">
+    <div id="container" class="d-flex bg-dark pt-5 " style="color: white; margin: auto; width: 650px; height: 650px;">
         <div class="ps-5 justify-content-start" style="color: rgb(234, 254, 19);">
             <h1>Survey</h1>
             <form action="/progress" method="post">
@@ -17,18 +17,18 @@
                     <div style="margin-top: 30px;">Name:</div>
                     <input type="text" name="name" id="name" style="margin-bottom: 20px;">
                     <div>
-                    <div class="mb-2"><label for="city">locations:</label></div>
-                        <select name="city" id="city">
-                            <option value="empty"> </option>
+                    <div class="mb-2"><label for="location">locations:</label></div>
+                        <select name="location" >
+                            <option value="">-- Select A Location --</option>
                             <option value="Seattle">Seattle</option>
-                            <option value="New Yorc">New York </option>
+                            <option value="New York">New York </option>
                             <option value="San Fancisco">San Fancisco</option>
                             <option value="Dallas">Dallas</option>
                         </select>
                     </div>
                     <div class="mb-2 mt-3" ><label for="language">Favorite Language:</label></div>
                         <select name="language" id="language">
-                            <option value="empty"> </option>
+                            <option value="">-- Select A Language --</option>
                             <option value="python">Python</option>
                             <option value="JavaScript">JavaScript </option>
                             <option value="HTML">HTML</option>
@@ -41,6 +41,13 @@
                     </div>
                     <input type="submit" value="submit">
             </form>
+            {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+        {% if messages %}                            <!-- check if there are any messages -->
+            {% for message in messages %}            <!-- loop through the messages -->
+                <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
         </div>
     </div>
 </body>
